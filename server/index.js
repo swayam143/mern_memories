@@ -7,6 +7,8 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json({ limit: "50mb" }));
+
 //Routes Started
 //
 import router from "./routes/posts.js";
@@ -15,8 +17,11 @@ app.use("/posts", router);
 //
 //Routes End
 
+//To upload large image in database
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+//
 
 //MONGOOSE CONNECTION STARTED
 //

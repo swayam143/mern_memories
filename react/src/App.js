@@ -1,11 +1,10 @@
 import "./App.scss";
-import {} from "@mui/material";
 import Navbar from "./components/navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Form from "./components/form/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPosts } from "./Redux/actions/post";
+import Home from "./pages/home/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/form" element={<Form />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );
@@ -28,4 +27,4 @@ function App() {
 
 export default App;
 
-// 9.0 - 9.30;
+// 23.40--24.25

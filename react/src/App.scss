@@ -4,6 +4,23 @@
   box-sizing: border-box;
   font-family: "Tiro Devanagari Marathi", serif !important;
 }
-//Font family
+
+body {
+  background: #aa076b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #61045f,
+    #aa076b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #61045f,
+    #aa076b
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+//Font families
 @import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap");
 //
+
+//Post scss
+@import "./components/posts/Post.scss";

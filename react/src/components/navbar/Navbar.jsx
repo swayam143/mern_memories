@@ -44,7 +44,7 @@ const Navbar = () => {
       }}
       position="static"
     >
-      <Container maxWidth="xl">
+      <Container sx={{ maxWidth: "100% !important" }}>
         <Toolbar disableGutters>
           <Link style={{ textDecoration: "none", color: "#fff" }} to="/">
             <Typography
@@ -53,14 +53,14 @@ const Navbar = () => {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
+                fontFamily: "monospace !important",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}
             >
-              LOGO
+              MEMORIES
             </Typography>
           </Link>
 

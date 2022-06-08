@@ -1,0 +1,49 @@
+.card_img {
+  height: 250px;
+  filter: brightness(50%);
+}
+.card_img:hover {
+  filter: brightness(100%);
+}
+.relative {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  color: #fff;
+  font-weight: 900;
+}
+.overlay_2 {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+.details {
+  margin-top: 20px;
+  padding-left: 10px;
+}
+.CardContent {
+  padding: 0px !important;
+  margin-top: 10px;
+}
+.cardActions {
+  padding: 0px 10px 0px 0px !important;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.btns {
+  text-transform: none !important;
+  padding-top: 6px !important;
+}
+.css-y6rp3m-MuiButton-startIcon > *:nth-of-type(1) {
+  font-size: 13px !important;
+  margin-top: -3px !important;
+}
+.css-y6rp3m-MuiButton-startIcon {
+  margin-right: 4px !important;
+}
