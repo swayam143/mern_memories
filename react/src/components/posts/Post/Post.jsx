@@ -13,7 +13,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
   return (
     <>
       <Card className="relative">
@@ -31,7 +31,12 @@ const Post = ({ post }) => {
             </Typography>
           </Grid>
           <Grid className="overlay_2">
-            <Button sx={{ color: "#fff", fontWeight: 900 }} onClick={() => {}}>
+            <Button
+              sx={{ color: "#fff", fontWeight: 900 }}
+              onClick={() => {
+                setCurrentId(post._id);
+              }}
+            >
               <MoreHorizIcon />
             </Button>
           </Grid>

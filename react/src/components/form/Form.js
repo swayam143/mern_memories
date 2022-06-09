@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
-import { createPost } from "../../Redux/actions/post";
+import { useDispatch, useSelector } from "react-redux";
+import { createPost, updatePost } from "../../Redux/actions/post";
 
-const Form = () => {
+const Form = ({ currentId, setCurrentID }) => {
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((message) => message._id === currentId) : null
+  );
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
+
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -17,8 +25,13 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
   };
+
   const clear = () => {};
   return (
     <>
