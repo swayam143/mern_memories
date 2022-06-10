@@ -4,15 +4,18 @@ import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../Redux/actions/post";
 
-const Form = ({ currentId, setCurrentID }) => {
+const Form = ({ currentId, setCurrentId }) => {
+  //Access state from Reducer but of particular id
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
 
+  //Whenever post changes setPost data becomes post like in editin we get previous data in form
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
+  //Our state
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -21,23 +24,40 @@ const Form = ({ currentId, setCurrentID }) => {
     selectedFile: "",
   });
 
+  //Redux function to dispatch
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //Editing mode
     if (currentId) {
       dispatch(updatePost(currentId, postData));
-    } else {
+    }
+    //Create Mode
+    else {
       dispatch(createPost(postData));
     }
+    clear();
   };
 
-  const clear = () => {};
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
   return (
     <>
       <Paper sx={{ padding: "10px" }}>
         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-          <Typography variant="h6"> Creating a memory</Typography>
+          <Typography variant="h6">
+            {currentId ? "Editing" : "Creating a memory"}
+          </Typography>
           <TextField
             sx={{ marginTop: "15px" }}
             name="creator"
