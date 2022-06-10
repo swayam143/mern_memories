@@ -1,5 +1,5 @@
 import * as api from "../../api";
-import { CREATE, FETCH_ALL, UPDATE } from "./actionTypes";
+import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from "./actionTypes";
 
 //Action creators
 
@@ -33,5 +33,28 @@ export const updatePost = (id, post) => async (dispatch) => {
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+//Delete api
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await api.deletePost(id);
+    dispatch({ type: DELETE, payload: id });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//LikePost api
+
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likePost(id);
+
+    dispatch({ type: LIKE, payload: data });
+  } catch (error) {
+    console.log(error);
   }
 };

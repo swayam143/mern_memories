@@ -12,8 +12,11 @@ import moment from "moment";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useDispatch } from "react-redux";
+import { deletePost, likePost } from "../../../Redux/actions/post";
 
 const Post = ({ post, setCurrentId }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <Card className="relative">
@@ -44,25 +47,27 @@ const Post = ({ post, setCurrentId }) => {
             <Typography color="textSecondary" variant="body2">
               {post.tags.map((tag) => `#${tag} `)}
             </Typography>
-            <Typography gutterBottom variant="h5">
+            <Typography margin={0} variant="h5">
               {post.title}
             </Typography>
             <CardContent className="CardContent">
               {" "}
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom color="textSecondary" variant="body2">
                 {post.message}
               </Typography>
             </CardContent>
             <CardActions className="cardActions">
               <Button
+                onClick={() => dispatch(likePost(post._id))}
                 className="btns"
                 size="small"
                 variant="contained"
                 startIcon={<ThumbUpIcon />}
               >
-                Liked
+                Like&nbsp;{post.likeCount}
               </Button>
               <Button
+                onClick={() => dispatch(deletePost(post._id))}
                 className="btns"
                 size="small"
                 variant="contained"

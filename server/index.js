@@ -31,7 +31,10 @@ const CONNECTION_URL =
   "mongodb+srv://Swayam143:Swayam143@cluster0.vtfx8.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
-  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() =>
     app.listen(PORT, () =>
       console.log(
