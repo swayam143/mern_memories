@@ -64,6 +64,10 @@ export const deletePost = async (req, res) => {
 
 export const likePost = async (req, res) => {
   const { id } = req.params;
+
+  //This we get from auth.js middleware
+  if (!req.userId) return res.json({ message: " Unathenticated" });
+
   //This code make sure that the id is valid and present in our database
   if (!mongoose.Types.ObjectId.isValid(id))
     res.status(404).send("No post with that id");
@@ -71,13 +75,21 @@ export const likePost = async (req, res) => {
   //This return us a particular post
   const post = await PostMessage.findById(id);
 
+  //We can check now is the user id is already in our like section in database
+
+  const index = post.likes.findIndex((id) => id === String(req.userId));
+
+  if (index === -1) {
+    //Like the post
+    post.likes.push(req.userId);
+  } else {
+    //Dislike a post
+    post.likes = post.likes.filter((id) => id !== String(req.userId));
+  }
+
   //Here we updated like count
-  const updatedPost = await PostMessage.findByIdAndUpdate(
-    id,
-    {
-      likeCount: post.likeCount + 1,
-    },
-    { new: true }
-  );
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
   res.json(updatedPost);
 };

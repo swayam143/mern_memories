@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/home/Home";
+import Auth from "./components/auth/Auth";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </>
   );
@@ -17,4 +19,4 @@ function App() {
 
 export default App;
 
-// 20.45-21.15
+//8.10--9.10

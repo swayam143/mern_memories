@@ -1,0 +1,55 @@
+.glass {
+  position: relative;
+  background: inherit;
+  overflow: hidden;
+
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.glass:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -20px;
+  box-shadow: inset 0 0 500px rgba(255, 255, 255, 0.4);
+  filter: blur(10px);
+  z-index: -1;
+}
+
+// .br_white {
+//   border: 1px solid #fff;
+// }
+// .br_white:focus {
+//   outline: 0px !important;
+//   background: red !important;
+// }
+.sign_in_btn {
+  background: #fff !important;
+  color: #000 !important;
+  text-transform: none !important;
+  font-size: 25px !important;
+  font-weight: 600 !important;
+}
+.input_style {
+  line-height: 50px;
+  background: #fafafa;
+  -webkit-box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+  -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #666;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}

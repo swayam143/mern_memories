@@ -12,8 +12,10 @@ app.use(express.json({ limit: "50mb" }));
 //Routes Started
 //
 import router from "./routes/posts.js";
+import userRouter from "./routes/user.js";
 
 app.use("/posts", router);
+app.use("/user", userRouter);
 //
 //Routes End
 
